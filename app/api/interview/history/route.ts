@@ -16,7 +16,7 @@ export async function GET() {
       )
     }
 
-    let interviews = []
+    let interviews: any[] = []
     let stats = {
       total: 0,
       completed: 0,

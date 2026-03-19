@@ -196,7 +196,7 @@ export function RecommendedRoles({
               Based on Your Interview Practice
             </h4>
             <p className="text-xs text-gray-600 dark:text-gray-400">
-              You've practiced {Object.values(interviewCategories).reduce((a, b) => a + b, 0)} interviews 
+              You&apos;ve practiced {Object.values(interviewCategories).reduce((a, b) => a + b, 0)} interviews 
               across {Object.keys(interviewCategories).length} categories. 
               Focus on {Object.entries(interviewCategories).sort(([,a], [,b]) => a - b)[0]?.[0]} for better preparation.
             </p>

@@ -108,7 +108,7 @@ Return as JSON array with structure:
     
     // Sort by priority (High -> Medium -> Low)
     const priorityOrder = { 'High': 0, 'Medium': 1, 'Low': 2 }
-    const sortedRoadmaps = roadmaps.sort((a, b) => {
+    const sortedRoadmaps = roadmaps.sort((a: any, b: any) => {
       const aPriority = priorityOrder[a.priority as keyof typeof priorityOrder] ?? 1
       const bPriority = priorityOrder[b.priority as keyof typeof priorityOrder] ?? 1
       return aPriority - bPriority

@@ -9,6 +9,7 @@ import { RecentActivity } from "@/components/dashboard/recent-activity"
 import { GoalsProgress } from "@/components/dashboard/goals-progress"
 import { LiveUpdates } from "@/components/dashboard/live-updates"
 import { useDashboardStats } from "@/hooks/use-dashboard-stats"
+import { useAuth } from "@/components/providers/auth-provider"
 import { useDashboardInsights } from "@/hooks/use-dashboard-insights"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -18,6 +19,7 @@ import Link from "next/link"
 
 export default function DashboardPage() {
   const { stats, loading, error, refetch } = useDashboardStats()
+  const { user } = useAuth()
   const { data: insights, loading: insightsLoading } = useDashboardInsights()
 
   if (loading) {
@@ -84,7 +86,7 @@ export default function DashboardPage() {
           )}
         </div>
         <div className="flex items-center gap-2">
-          <LiveUpdates userId={stats?.user?.id} />
+          <LiveUpdates userId={user?.id} />
           <Button variant="outline" size="sm" onClick={refetch}>
             Refresh
           </Button>

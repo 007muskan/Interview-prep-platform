@@ -124,7 +124,7 @@ function generateAdvancedInsights(data: any) {
   // Interview performance insights
   if (interviews.length >= 3) {
     const recentInterviews = interviews.slice(0, 5)
-    const avgScore = recentInterviews.reduce((sum, i) => sum + (i.score || 0), 0) / recentInterviews.length
+    const avgScore = recentInterviews.reduce((sum: number, i: any) => sum + (i.score || 0), 0) / recentInterviews.length
     
     if (avgScore < 70) {
       insights.push({
@@ -139,7 +139,7 @@ function generateAdvancedInsights(data: any) {
     }
 
     // Check for improvement trend
-    const oldAvg = interviews.slice(5, 10).reduce((sum, i) => sum + (i.score || 0), 0) / Math.min(5, interviews.slice(5, 10).length)
+    const oldAvg = interviews.slice(5, 10).reduce((sum: number, i: any) => sum + (i.score || 0), 0) / Math.min(5, interviews.slice(5, 10).length)
     if (avgScore > oldAvg + 10) {
       insights.push({
         type: 'success',
@@ -154,7 +154,7 @@ function generateAdvancedInsights(data: any) {
   }
 
   // Learning progress insights
-  const inProgressRoadmaps = roadmaps.filter(r => r.status === 'in-progress')
+  const inProgressRoadmaps = roadmaps.filter((r: any) => r.status === 'in-progress')
   if (inProgressRoadmaps.length > 3) {
     insights.push({
       type: 'focus',
@@ -168,7 +168,7 @@ function generateAdvancedInsights(data: any) {
   }
 
   // Activity insights
-  const recentActivity = activities.filter(a => 
+  const recentActivity = activities.filter((a: any) => 
     Date.now() - new Date(a.createdAt).getTime() < 7 * 24 * 60 * 60 * 1000
   )
   
@@ -240,13 +240,13 @@ function generateSmartRecommendations(data: any) {
   }
 
   // Interview category recommendations
-  const interviewCategories = interviews.reduce((acc, i) => {
+  const interviewCategories = interviews.reduce((acc: any, i: any) => {
     acc[i.category] = (acc[i.category] || 0) + 1
     return acc
   }, {} as Record<string, number>)
 
   const leastPracticedCategory = Object.entries(interviewCategories)
-    .sort(([,a], [,b]) => a - b)[0]
+    .sort(([,a], [,b]) => (a as number) - (b as number))[0]
 
   if (leastPracticedCategory && interviews.length > 5) {
     recommendations.push({

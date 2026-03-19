@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { useAuth } from './auth-provider'
 
 interface ProfileContextType {
@@ -19,7 +19,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const { user } = useAuth()
   const [profileImage, setProfileImage] = useState<string | null>(null)
 
-  const fetchProfileImage = async () => {
+  const fetchProfileImage = useCallback(async () => {
     if (!user) return
 
     try {
@@ -31,7 +31,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error("Failed to fetch profile image:", error)
     }
-  }
+  }, [user])
 
   const updateProfileImage = (imageUrl: string) => {
     setProfileImage(imageUrl)
@@ -43,7 +43,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     fetchProfileImage()
-  }, [user])
+  }, [fetchProfileImage])
 
   return (
     <ProfileContext.Provider value={{ 

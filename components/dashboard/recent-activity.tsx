@@ -27,6 +27,7 @@ export function RecentActivity({ activities = [], showInsights = false }: Recent
       iconColor: "text-green-500 dark:text-green-400",
       iconBg: "bg-green-50 dark:bg-green-900/30",
       type: "welcome",
+      details: [] as string[],
     },
     {
       icon: MessageSquare,
@@ -202,7 +203,7 @@ export function RecentActivity({ activities = [], showInsights = false }: Recent
                     {/* Activity Details */}
                     {activity.details && activity.details.length > 0 && (
                       <div className="flex flex-wrap gap-1 mt-2">
-                        {activity.details.map((detail, idx) => (
+                        {activity.details.map((detail: string, idx: number) => (
                           <Badge key={idx} variant="outline" className="text-xs">
                             {detail}
                           </Badge>

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Sparkles } from "lucide-react"
+import { Layers } from "lucide-react"
 import { AuthForm } from "./auth-form"
 import { ThemeToggle } from "@/components/theme-toggle"
 
@@ -14,7 +14,7 @@ export default function AuthPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Sparkles className="h-8 w-8 text-primary" />
+            <Layers className="h-8 w-8 text-primary" />
             <span className="text-2xl font-bold text-gray-900 dark:text-white">Career Intelligence Platform</span>
           </div>
           {/* <div className="flex gap-4 justify-center text-sm text-gray-500 dark:text-gray-400">

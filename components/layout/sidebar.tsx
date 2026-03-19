@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutDashboard, FileText, Map, MessageSquare, User, Sparkles, LogOut } from "lucide-react"
+import { LayoutDashboard, FileText, Map, MessageSquare, User, Layers, LogOut } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
@@ -69,7 +69,7 @@ export function Sidebar() {
   return (
     <div className="flex h-screen w-64 flex-col bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-colors duration-300">
       <div className="flex h-16 items-center gap-2 border-b border-gray-200 dark:border-gray-700 px-6">
-        <Sparkles className="h-6 w-6 text-primary flex-shrink-0" />
+        <Layers className="h-6 w-6 text-primary flex-shrink-0" />
         <span className="text-lg font-bold text-gray-900 dark:text-white truncate">Career AI</span>
       </div>
       

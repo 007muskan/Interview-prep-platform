@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { FileText, Target, MessageSquare, TrendingUp, Sparkles, Upload, CheckCircle2, ArrowRight, Zap, Brain, Rocket } from "lucide-react"
+import { FileText, Target, MessageSquare, TrendingUp, Layers, Upload, CheckCircle2, ArrowRight, Zap, Brain } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import "./animations.css"
 
@@ -11,7 +11,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white dark:bg-gray-900 overflow-hidden transition-colors duration-300">
       <header className="flex items-center justify-between px-8 py-4 border-b border-gray-200 dark:border-gray-700 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 sticky top-0 z-50">
         <div className="flex items-center gap-2 animate-slide-down">
-          <Sparkles className="h-6 w-6 text-primary" />
+          <Layers className="h-6 w-6 text-primary" />
           <span className="text-xl font-bold text-gray-900 dark:text-white">Career Intelligence Platform</span>
         </div>
         <nav className="flex items-center gap-8">
@@ -48,7 +48,7 @@ export default function LandingPage() {
               <div className="animate-slide-up">
                 <div className="inline-block mb-6 px-4 py-2 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-900/30 dark:via-indigo-900/30 dark:to-purple-900/30 rounded-full border border-blue-200/50 dark:border-blue-600/30 backdrop-blur-sm">
                   <span className="flex items-center gap-2 text-sm font-medium bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-                    <Sparkles className="h-4 w-4 text-blue-500 dark:text-blue-400" />
+                    <Layers className="h-4 w-4 text-blue-500 dark:text-blue-400" />
                     New: Advanced AI Resume Analysis
                   </span>
                 </div>
@@ -116,7 +116,7 @@ export default function LandingPage() {
                     <div className="w-80 h-48 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-6 transform rotate-3 hover:rotate-0 transition-transform duration-500">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                          <Sparkles className="h-6 w-6 text-white" />
+                          <Layers className="h-6 w-6 text-white" />
                         </div>
                         <div>
                           <h3 className="font-bold text-gray-900 dark:text-white">AI Analysis</h3>

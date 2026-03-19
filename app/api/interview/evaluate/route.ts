@@ -3,6 +3,9 @@ import { createClient } from "@/lib/supabase/server"
 import { prisma } from "@/lib/prisma"
 import { evaluateAnswer } from "@/lib/ai/interview-generator"
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 export async function POST(req: Request) {
   try {
     const supabase = createClient()

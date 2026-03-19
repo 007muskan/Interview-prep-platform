@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { generateSkillBasedRoadmap } from '@/lib/ai/roadmap-generator'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
   try {
     const { skillGaps, currentSkills, targetRole } = await request.json()

@@ -2,7 +2,15 @@ import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 import { prisma } from "@/lib/prisma"
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 export async function POST(req: Request) {
+  // Prevent execution during build time
+  if (process.env.VERCEL_ENV === undefined && process.env.NODE_ENV === 'production') {
+    return NextResponse.json({ error: "Not available during build" }, { status: 503 })
+  }
+
   try {
     const supabase = createClient()
     

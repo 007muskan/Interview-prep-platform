@@ -4,6 +4,9 @@ import { prisma } from "@/lib/prisma"
 import { analyzeResume } from "@/lib/ai/resume-analyzer"
 import pdf from "pdf-parse"
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 export async function POST(req: Request) {
   try {
     console.log("Starting resume upload process...")

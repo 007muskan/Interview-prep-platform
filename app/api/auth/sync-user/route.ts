@@ -44,6 +44,17 @@ export async function POST(req: Request) {
     return NextResponse.json({ user: dbUser })
   } catch (error) {
     console.error("Sync user error:", error)
+    
+    // More specific error handling for different types of errors
+    if (error instanceof Error) {
+      if (error.message.includes('connect') || error.message.includes('timeout')) {
+        return NextResponse.json(
+          { error: "Database connection failed" },
+          { status: 503 }
+        )
+      }
+    }
+    
     return NextResponse.json(
       { error: "Failed to sync user" },
       { status: 500 }

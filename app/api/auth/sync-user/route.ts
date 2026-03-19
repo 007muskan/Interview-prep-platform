@@ -6,11 +6,6 @@ import { prisma } from "@/lib/prisma"
 export const dynamic = 'force-dynamic'
 
 export async function POST(req: Request) {
-  // Prevent execution during build time
-  if (process.env.VERCEL_ENV === undefined && process.env.NODE_ENV === 'production') {
-    return NextResponse.json({ error: "Not available during build" }, { status: 503 })
-  }
-
   try {
     const supabase = createClient()
     
@@ -25,31 +20,44 @@ export async function POST(req: Request) {
       )
     }
 
-    // Check if user exists in our database
-    let dbUser = await prisma.user.findUnique({
-      where: { email: user.email! },
-    })
+    try {
+      // Check if user exists in our database
+      let dbUser = await prisma.user.findUnique({
+        where: { email: user.email! },
+      })
 
-    // If not, create them
-    if (!dbUser) {
-      dbUser = await prisma.user.create({
-        data: {
+      // If not, create them
+      if (!dbUser) {
+        dbUser = await prisma.user.create({
+          data: {
+            id: user.id,
+            email: user.email!,
+            name: user.user_metadata?.name || user.email?.split('@')[0],
+            image: user.user_metadata?.avatar_url,
+          },
+        })
+
+        // Create default preferences
+        await prisma.userPreferences.create({
+          data: {
+            userId: dbUser.id,
+          },
+        })
+      }
+
+      return NextResponse.json({ user: dbUser })
+    } catch (dbError) {
+      console.error("Database error during sync:", dbError)
+      // Return a fallback response if database is not available
+      return NextResponse.json({ 
+        user: {
           id: user.id,
-          email: user.email!,
+          email: user.email,
           name: user.user_metadata?.name || user.email?.split('@')[0],
           image: user.user_metadata?.avatar_url,
-        },
-      })
-
-      // Create default preferences
-      await prisma.userPreferences.create({
-        data: {
-          userId: dbUser.id,
-        },
+        }
       })
     }
-
-    return NextResponse.json({ user: dbUser })
   } catch (error) {
     console.error("Sync user error:", error)
     

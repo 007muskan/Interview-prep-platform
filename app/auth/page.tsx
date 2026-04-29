@@ -26,7 +26,7 @@ export default function AuthPage() {
         <AuthForm />
 
         <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-8">
-          © 2024 Career Intelligence Platform. All rights reserved.
+          © 2026 Career Intelligence Platform. All rights reserved.
         </p>
       </div>
     </div>

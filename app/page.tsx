@@ -386,7 +386,7 @@ export default function LandingPage() {
 
       <footer className="border-t border-gray-200 dark:border-gray-700 py-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
         <div className="container mx-auto px-8 text-center text-sm text-gray-600 dark:text-gray-400">
-          © 2024 Career Intelligence Platform. All rights reserved.
+          © 2026 Career Intelligence Platform. All rights reserved.
         </div>
       </footer>
     </div>
